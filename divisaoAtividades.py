@@ -24,11 +24,21 @@ def cria_tabela(linhas, colunas):
 diretorias = gerar_diretorias(4)
 atividades = gerar_atividades(6)
 tabela = cria_tabela(6, 4)
-
-for i in range(atividades.__len__):
-    for j in range(diretorias.__len__):
-        horas_atividade = atividades[0]
-        peso_Atividade = atividades[1]
-        if diretorias[0] < horas_atividade:
+print(tabela, '\n',  diretorias, '\n', atividades)
+i = 0
+j = 0
+for atividade in atividades:
+    for diretoria in diretorias:
+        horas_atividade = atividades[i][0]
+        print(horas_atividade)
+        peso_Atividade = atividades[i][1]
+        print(peso_Atividade)
+        if diretoria[0] < horas_atividade:
             tabela[i][j] = tabela[i-1][j]
-        
+        else:
+            atual = peso_Atividade + tabela[i-1][j-horas_atividade]
+            anterior = tabela[i -1][j]
+            max(atual, anterior)
+        i += 1
+        j += 1
+tabela[atividades, diretorias]
